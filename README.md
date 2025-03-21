@@ -103,7 +103,7 @@ Future versions may include a REST API for remote scanning capabilities.
 
 ## 🐛 Bug Reports & Feature Requests
 
-Have an issue or suggestion? **Submit it [here](../../issues)!** Provide:
+Have an issue or suggestion? **Submit it [here](../../issues)** Provide:
 
 - Expected behavior  
 - Actual behavior  
@@ -127,4 +127,3 @@ This project is **MIT licensed** – feel free to use and modify it!
 ## 📜 Closing Notes
 
 If you enjoyed this project, **drop a star!** ⭐  
-For any questions or feedback, contact **[Shlomi (OnyxByte)](https://github.com/OnyxByte)**.
