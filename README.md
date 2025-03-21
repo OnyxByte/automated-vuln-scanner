@@ -1,27 +1,3 @@
-### **📌 יצירת README.md מקצועי ל-GitHub**
-
-📌 **README הוא הפנים של הפרויקט שלך – ניצור אותו בצורה מקצועית, ברורה ומזמינה.**
-
----
-
-## ✅ **🔹 קובץ `README.md` מוכן להעלאה**
-
-ניצור קובץ **`README.md`** מסודר, כולל:
-
-- **תיאור הפרויקט**
-- **תכונות עיקריות**
-- **הוראות התקנה והרצה**
-- **דוגמאות שימוש**
-- **צילומי מסך (אם תרצה להוסיף)**
-- **רשימת שיפורים עתידיים**
-
----
-
-### **📌 קובץ `README.md`**
-
-ניצור את הקובץ הבא:
-
-````md
 # 🔍 Automated Vulnerability Scanner
 
 An advanced security tool that scans for vulnerabilities using **Nmap**, stores results in **SQLite**, and provides interactive reports with **JSON, PDF exports, and graphical visualizations**.
@@ -46,6 +22,7 @@ An advanced security tool that scans for vulnerabilities using **Nmap**, stores 
 git clone https://github.com/USERNAME/REPOSITORY_NAME.git
 cd REPOSITORY_NAME
 ```
+
 ````
 
 ### **2️⃣ Install dependencies**
@@ -89,3 +66,4 @@ Pull requests are welcome! If you'd like to contribute, please fork the reposito
 ## 📄 License
 
 This project is **MIT licensed** – feel free to use and modify it!
+````
