@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vulnerability Scanner</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-5">
+
+    <h1 class="text-center">🔍 Automated Vulnerability Scanner</h1>
+
+    <form method="POST" class="text-center mt-4">
+        <div class="input-group w-50 mx-auto">
+            <input type="text" name="target" class="form-control" placeholder="Enter Target IP or Domain" required>
+            <button type="submit" class="btn btn-primary">
+                🎯 Scan
+            </button>
+        </div>
+    </form>
+
+    {% if result %}
+    <div class="mt-4">
+        <h2 class="text-center">📊 Scan Results</h2>
+        {% if result.error %}
+            <p class="text-danger text-center"><strong>Error:</strong> {{ result.error }}</p>
+        {% else %}
+            <table class="table table-bordered table-hover mt-3">
+                <thead class="table-dark text-center">
+                    <tr>
+                        <th>Host</th>
+                        <th>OS</th>
+                        <th>Port</th>
+                        <th>State</th>
+                        <th>Service</th>
+                        <th>Version</th>
+                        <th>Vulnerabilities</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for host, data in result.items() %}
+                        {% for port_info in data.ports %}
+                        <tr>
+                            <td class="text-center">{{ host }}</td>
+                            <td class="text-center">{{ data.os }}</td>
+                            <td class="text-center">{{ port_info.port }}</td>
+                            <td class="text-center">
+                                {% if port_info.state == 'open' %}
+                                    <span class="text-success fw-bold">🟢 Open</span>
+                                {% else %}
+                                    <span class="text-danger fw-bold">🔴 {{ port_info.state }}</span>
+                                {% endif %}
+                            </td>
+                            <td class="text-center">{{ port_info.service }}</td>
+                            <td class="text-center">{{ port_info.version }}</td>
+                            <td>
+                                {% if port_info.vulnerabilities == 'No known vulnerabilities' %}
+                                    <span class="text-success fw-bold">✔ None</span>
+                                {% else %}
+                                    <ul class="text-danger">
+                                        {% for vuln in port_info.vulnerabilities.split('\n') %}
+                                            <li>{{ vuln }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+    {% endif %}
+
+</body>
+</html>

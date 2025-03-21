@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scan History</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-5">
+
+    <h1 class="text-center">📜 Scan History</h1>
+
+    {% if port_chart %}
+        <h2 class="text-center mt-4">📊 Scan Results Overview</h2>
+        <div class="text-center">
+            <img src="{{ port_chart }}" alt="Port Analysis Graph" class="img-fluid rounded shadow">
+        </div>
+    {% endif %}
+
+    <table class="table table-bordered table-hover mt-4">
+        <thead class="table-dark">
+            <tr>
+                <th>Target</th>
+                <th>OS</th>
+                <th>Ports</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for scan in scans %}
+            <tr>
+                <td>{{ scan[0] }}</td>
+                <td>{{ scan[1] }}</td>
+                <td>{{ scan[2] }}</td>
+                <td>{{ scan[3] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="text-center mt-4">
+        <a href="/export/json" class="btn btn-success btn-lg me-2">📥 Download JSON</a>
+        <a href="/export/pdf" class="btn btn-danger btn-lg">📄 Download PDF</a>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="/" class="btn btn-primary btn-lg">🔄 Back to Scanner</a>
+    </div>
+
+</body>
+</html>
